@@ -32,6 +32,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures{
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -52,6 +55,7 @@ dependencies {
     //Utils
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.bumptech.glide:glide:4.13.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
 
     //LiveData and ViewModel KTX
@@ -60,9 +64,6 @@ dependencies {
 
     //Play Services Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.1'
-
-
-
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
