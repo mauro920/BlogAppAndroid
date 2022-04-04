@@ -11,8 +11,8 @@ class HomeScreenDataSource {
         val postList = mutableListOf<Post>()
         val querySnapshot = FirebaseFirestore.getInstance().collection("posts").get().await()
         for (post in querySnapshot.documents) {
-            post.toObject(Post::class.java)?.let {
-                postList.add(it)
+            post.toObject(Post::class.java)?.let { fbPost ->
+                postList.add(fbPost)
             }
         }
         return Resource.Success(postList)
