@@ -36,6 +36,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding = FragmentLoginBinding.bind(view)
         isUserLogged()
         doLogin()
+        goToRegisterPage()
     }
 
 
@@ -51,6 +52,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             val password = binding.passwordTxt.text.toString().trim()
             validateCredentials(email, password)
             login(email, password)
+        }
+    }
+    private fun goToRegisterPage(){
+        binding.registerBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }
 
