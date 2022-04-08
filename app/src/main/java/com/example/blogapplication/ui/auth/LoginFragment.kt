@@ -3,30 +3,28 @@ package com.example.blogapplication.ui.auth
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.blogapplication.R
 import com.example.blogapplication.core.Resource
-import com.example.blogapplication.data.remote.auth.LoginDataSource
+import com.example.blogapplication.data.remote.auth.AuthDataSource
 import com.example.blogapplication.databinding.FragmentLoginBinding
-import com.example.blogapplication.domain.auth.LoginRepoImpl
-import com.example.blogapplication.presentation.auth.LoginViewModel
-import com.example.blogapplication.presentation.auth.LoginViewModelProvider
+import com.example.blogapplication.domain.auth.AuthRepoImpl
+import com.example.blogapplication.presentation.auth.AuthViewModel
+import com.example.blogapplication.presentation.auth.AuthViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private lateinit var binding: FragmentLoginBinding
     private val firebaseAuth by lazy { FirebaseAuth.getInstance() }
-    private val viewModel by viewModels<LoginViewModel> {
-        LoginViewModelProvider(
-            LoginRepoImpl(
-                LoginDataSource()
+    private val viewModel by viewModels<AuthViewModel> {
+        AuthViewModelProvider(
+            AuthRepoImpl(
+                AuthDataSource()
             )
         )
     }
