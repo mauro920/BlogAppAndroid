@@ -1,6 +1,7 @@
 package com.example.blogapplication.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -8,9 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.blogapplication.R
 import com.example.blogapplication.core.Resource
-import com.example.blogapplication.data.remote.HomeScreenDataSource
+import com.example.blogapplication.data.remote.home.HomeScreenDataSource
 import com.example.blogapplication.databinding.FragmentHomeScreenBinding
-import com.example.blogapplication.domain.HomeScreenRepoImpl
+import com.example.blogapplication.domain.home.HomeScreenRepoImpl
 import com.example.blogapplication.presentation.HomeScreenViewModel
 import com.example.blogapplication.presentation.HomeScreenViewModelFactory
 import com.example.blogapplication.ui.home.adapter.HomeScreenAdapter
@@ -47,6 +48,7 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                         "Ocurrio un error: ${it.exception}",
                         Toast.LENGTH_LONG
                     ).show()
+                    Log.d("mauropena","${it.exception}")
                 }
             }
 
