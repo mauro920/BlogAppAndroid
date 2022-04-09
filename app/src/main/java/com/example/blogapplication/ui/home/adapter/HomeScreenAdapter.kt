@@ -36,6 +36,11 @@ class HomeScreenAdapter(private val postList: List<Post>) :
             Glide.with(context).load(item.profile_picture).centerCrop().into(binding.profilePicture)
             binding.profileName.text = item.profile_name
             binding.postTimestamp.text = "Hace 2 Horas"
+            if (item.post_description.isEmpty()){
+                binding.postDescription.visibility = View.GONE
+            } else {
+                binding.postDescription.text = item.post_description
+            }
         }
 
     }
