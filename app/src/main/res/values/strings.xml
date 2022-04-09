@@ -13,4 +13,6 @@
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="camera">Camera</string>
+    <string name="about_me">About Me...</string>
+    <string name="save_info">Save Info</string>
 </resources>
