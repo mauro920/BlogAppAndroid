@@ -31,7 +31,7 @@ class AuthDataSource {
 
     suspend fun updateUserDataProfile(imageBitmap: Bitmap, username: String) {
         val user = FirebaseAuth.getInstance().currentUser
-        val imageRef = FirebaseStorage.getInstance().reference.child("${user.uid}/profile_picture")
+        val imageRef = FirebaseStorage.getInstance().reference.child("${user?.uid}/profile_picture")
         val baos = ByteArrayOutputStream()
         imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
         val downloadUrl =
