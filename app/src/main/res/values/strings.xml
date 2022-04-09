@@ -15,4 +15,6 @@
     <string name="camera">Camera</string>
     <string name="about_me">About Me...</string>
     <string name="save_info">Save Info</string>
+    <string name="photo_description">Photo Description.</string>
+    <string name="upload_photo">Upload photo</string>
 </resources>
