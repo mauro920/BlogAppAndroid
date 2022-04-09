@@ -57,7 +57,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 }
                 is Resource.Success -> {
                     binding.progressBarRegister.visibility = View.GONE
-                    findNavController().navigate(R.id.action_registerFragment_to_homeScreenFragment)
+                    findNavController().navigate(R.id.action_registerFragment_to_setupProfileFragment)
                 }
                 is Resource.Failure -> {
                     binding.progressBarRegister.visibility = View.GONE
