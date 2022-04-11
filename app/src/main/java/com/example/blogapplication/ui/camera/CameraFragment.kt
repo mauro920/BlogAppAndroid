@@ -21,11 +21,17 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCameraBinding.bind(view)
-        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        try {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-        } catch (e: ActivityNotFoundException){
-            Toast.makeText(requireContext(), "No se ha encontrado aplicacion camara.", Toast.LENGTH_LONG).show()
+        binding.postImage.setOnClickListener {
+            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            try {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(
+                    requireContext(),
+                    "No se ha encontrado aplicacion camara.",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
@@ -33,7 +39,8 @@ class CameraFragment : Fragment(R.layout.fragment_camera) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
             val imageBitmap = data?.extras?.get("data") as Bitmap
-            binding.imageView.setImageBitmap(imageBitmap)
+            binding.postImage.setImageBitmap(imageBitmap)
+            bitmap = imageBitmap
         }
     }
 }

@@ -7,7 +7,7 @@
     tools:context=".ui.camera.CameraFragment">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/post_image"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/post_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -34,5 +34,5 @@
         android:text="@string/upload_photo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/post_description" />
 </androidx.constraintlayout.widget.ConstraintLayout>

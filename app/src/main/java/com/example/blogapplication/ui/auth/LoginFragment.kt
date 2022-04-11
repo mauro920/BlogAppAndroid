@@ -40,7 +40,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun isUserLogged() {
         firebaseAuth.currentUser?.let {
-            findNavController().navigate(R.id.action_loginFragment_to_homeScreenFragment)
+            if (it.displayName.isNullOrEmpty()) {
+                findNavController().navigate(R.id.action_loginFragment_to_setupProfileFragment)
+            } else {
+                findNavController().navigate(R.id.action_loginFragment_to_homeScreenFragment)
+            }
         }
     }
 
@@ -52,7 +56,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             login(email, password)
         }
     }
-    private fun goToRegisterPage(){
+
+    private fun goToRegisterPage() {
         binding.registerBtn.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
@@ -77,6 +82,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 is Resource.Success -> {
                     binding.progressBarLogin.visibility = View.GONE
                     findNavController().navigate(R.id.action_loginFragment_to_homeScreenFragment)
+                    if (it.data?.displayName.isNullOrEmpty()) {
+                        findNavController().navigate(R.id.action_loginFragment_to_setupProfileFragment)
+                    } else {
+                        findNavController().navigate(R.id.action_loginFragment_to_homeScreenFragment)
+                    }
                 }
                 is Resource.Failure -> {
                     binding.progressBarLogin.visibility = View.GONE
@@ -84,9 +94,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     Toast.makeText(
                         requireContext(),
                         "Error: ${it.exception}",
-                        Toast.LENGTH_LONG)
+                        Toast.LENGTH_LONG
+                    )
                         .show()
-                    Log.d("fire","${it.exception}")
+                    Log.d("fire", "${it.exception}")
                 }
             }
         })
